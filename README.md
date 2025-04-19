@@ -1,4 +1,3 @@
-readme_text = """
 # SVM Optimization on UCI Letter Recognition Dataset
 
 This project implements Support Vector Machine (SVM) classification on the UCI Letter Recognition Dataset, focusing on hyperparameter tuning across 10 randomized data splits. Each split undergoes 100 iterations with varied SVM configurations to analyze accuracy trends and convergence behavior.
@@ -34,22 +33,17 @@ This project implements Support Vector Machine (SVM) classification on the UCI L
 
 ##  Results
 
-###  Final Accuracy Summary
+###  Final Accuracy Table
 
-A summary table containing the top accuracy and best parameters for each split is saved in `svm_results_summary.json` and also displayed as a sorted DataFrame.
+> Screenshot taken from notebook output after sorting accuracies:
 
-> 📌 *Example Table Screenshot:*  
-> *(Insert screenshot image here)*  
-> `![Accuracy Table](results/image.png)`
+![Final Results Table](results/image.png)
 
----
+###  Convergence Plot (Best Sample: S6)
 
-###  Convergence Plot
+> Accuracy over 100 iterations for best performing sample.
 
-The split with the highest top accuracy is visualized to show accuracy trend across 100 trials.
-
-> Best Split: *e.g., Set 6*  
-> `![Convergence Plot](graphs/convergence_best_sample.png)`
+![Convergence Plot](graphs/convergence_best_sample.png)
 
 ---
 
