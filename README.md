@@ -39,7 +39,7 @@ This project implements Support Vector Machine (SVM) classification on the UCI L
 
 ![Final Results Table](results/image.png)
 
-###  Convergence Plot (Best Sample: S6)
+###  Convergence Plot (Best Sample: S1)
 
 > Accuracy over 100 iterations for best performing sample.
 
