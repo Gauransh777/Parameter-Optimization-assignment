@@ -1,51 +1,65 @@
-# SVM Optimization Assignment – UCI Letter Recognition Dataset
+readme_text = """
+# SVM Optimization on UCI Letter Recognition Dataset
 
-This project performs Support Vector Machine (SVM) optimization using 100 iterations across 10 randomly split samples (70% train / 30% test). The task is part of an academic assignment focused on comparing best accuracy and parameters per sample and analyzing convergence behavior.
-
----
-
-## 📚 Dataset
-
-- **Name**: [Letter Recognition Dataset](https://archive.ics.uci.edu/ml/datasets/Letter+Recognition)
-- **Samples**: 20,000
-- **Classes**: 26 (English capital letters A-Z)
-- **Features**: 16 numeric features
-- **Source**: UCI Machine Learning Repository
+This project implements Support Vector Machine (SVM) classification on the UCI Letter Recognition Dataset, focusing on hyperparameter tuning across 10 randomized data splits. Each split undergoes 100 iterations with varied SVM configurations to analyze accuracy trends and convergence behavior.
 
 ---
 
-## ⚙️ Methodology
+## Dataset Overview
 
-1. The dataset was encoded and split into 10 different 70-30 train-test splits (samples S1–S10).
-2. For each sample:
-   - 100 SVMs were trained using randomized hyperparameters (`kernel`, `C`, `gamma`, `degree`)
-   - The **best performing model** was recorded with its accuracy and parameters
-   - A **convergence graph** was plotted for the sample with **maximum accuracy**
-
----
-
-## 📈 Results
-
-### 📋 Final Accuracy Table
-
-> Screenshot taken from notebook output after sorting accuracies:
-
-![Final Results Table](results/image.png)
-
-### 📊 Convergence Plot (Best Sample: S6)
-
-> Accuracy over 100 iterations for best performing sample.
-
-![Convergence Plot](graphs/convergence_best_sample.png)
+- **Dataset**: Letter Recognition  
+- **Samples**: 20,000  
+- **Features**: 16 numerical attributes per letter image  
+- **Target Classes**: 26 (Capital letters A to Z)  
+- **Source**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Letter+Recognition)
 
 ---
 
-## 🧠 Basic Data Analysis
+## Methodology
 
-- The **RBF kernel** consistently outperformed others across all samples.
-- Best accuracy achieved: **97.95%** (Sample S6)
-- Accuracy fluctuated due to random parameter selection, but top-performing configurations often had:
-  - `C`: Between 4 and 6
-  - `gamma`: `'auto'`
-  - `degree`: N/A for non-poly kernels
+- The dataset is preprocessed by encoding letter labels (A-Z) into numeric values (0–25).  
+- The data is split into **10 train-test sets** using a **70% training and 30% testing ratio** with different random seeds.  
+
+### For each split:
+- 100 SVM models are trained with randomized combinations of:
+  - `kernel`: `'linear'`, `'rbf'`, `'poly'`
+  - `C`: Random float in range **[0.1, 10]**
+  - `gamma`: `'scale'` or `'auto'` *(only for `rbf` and `poly`)*
+  - `degree`: Random int in **[2, 5]** *(only for `poly`)*
+
+- The **best accuracy** and corresponding **hyperparameters** are recorded.
+- The best-performing split is visualized via an **accuracy convergence plot**.
+
+---
+
+##  Results
+
+###  Final Accuracy Summary
+
+A summary table containing the top accuracy and best parameters for each split is saved in `svm_results_summary.json` and also displayed as a sorted DataFrame.
+
+> 📌 *Example Table Screenshot:*  
+> *(Insert screenshot image here)*  
+> `![Accuracy Table](results/image.png)`
+
+---
+
+###  Convergence Plot
+
+The split with the highest top accuracy is visualized to show accuracy trend across 100 trials.
+
+> Best Split: *e.g., Set 6*  
+> `![Convergence Plot](graphs/convergence_best_sample.png)`
+
+---
+
+##  Key Insights
+
+- The **RBF kernel** was frequently present in top-performing models.  
+- **Best Accuracy observed**: ~97.95%  
+- Optimal hyperparameter patterns among top models:
+  - `C`: Typically between **4–6**
+  - `gamma`: Often `'auto'`
+  - `degree`: Only relevant when `kernel='poly'`
+
 """
